@@ -108,16 +108,3 @@ app.patch('/products/:id', (req, res) => {
 });
 
 app.listen(serverPort);
-
-/*
-app.get('/products', (request, response) => {
-  response.send(productList);
-});
-
-app.post('/products', (request, response) => {
-  const { name, price } = request.body;
-  const newProduct = { name, price, quantity: 1, id: uniqid() };
-  productList.push(newProduct);
-  response.send(newProduct);
-});
-*/
