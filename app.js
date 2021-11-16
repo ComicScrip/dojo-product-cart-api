@@ -107,4 +107,18 @@ app.patch('/products/:id', (req, res) => {
     });
 });
 
+productsRouter.delete('/:id', (req, res) => {
+  connection
+    .promise()
+    .query('DELETE FROM products WHERE id = ?', [req.params.id])
+    .then(([result]) => {
+      if (result.affectedRows) res.sendStatus(204);
+      else res.sendStatus(404);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
 app.listen(serverPort);
